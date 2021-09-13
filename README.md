@@ -1,4 +1,4 @@
-# Frontend Part of the Job Employment Site Project with React.js
+# Frontend side of the Job Employment Site Project with React.js + Spring Boot
 
 
 # Getting Started with Create React App
