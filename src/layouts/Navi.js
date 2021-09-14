@@ -6,10 +6,12 @@ import SignedIn from "./SignedIn";
 import SignedOut from "./SignedOut";
 import Advertisement from "../pages/Advertisement";
 import JobList from "../pages/JobList";
-
+import { useSelector } from "react-redux";
 export default function Navi() {
   const [isAuthenticated, setAuthenticated] = useState(true);
   const history = useHistory();
+  const loginType = useSelector((state) => state.loginType);
+  console.log(loginType);
 
   function handleSingOut(params) {
     setAuthenticated(false);
@@ -27,18 +29,30 @@ export default function Navi() {
           <Menu.Item>
             <Link to="/">Main Page</Link>
           </Menu.Item>
-          <Menu.Item>
-            <Link to="/advertisement">Advertisements</Link>
-          </Menu.Item>
-          <Menu.Item>
-            <Link to="/approvalprocess">Awaiting Approval</Link>
-          </Menu.Item>
-          <Menu.Item>
-            <Link to="/favorites">My Favorites</Link>
-          </Menu.Item>
-          <Menu.Item>
-            <Link to="/resume">My Resume</Link>
-          </Menu.Item>
+          {loginType == 2 && (
+            <Menu.Item>
+              <Link to="/advertisement">Advertisements</Link>
+            </Menu.Item>
+          )}
+
+          {loginType == 3 && (
+            <Menu.Item>
+              <Link to="/approvalprocess">Awaiting Approval</Link>
+            </Menu.Item>
+          )}
+
+          {loginType == 1 && (
+            <Menu.Item>
+              <Link to="/favorites">My Favorites</Link>{" "}
+            </Menu.Item>
+          )}
+
+          {loginType == 1 && (
+            <Menu.Item>
+              <Link to="/resume">My Resume</Link>
+            </Menu.Item>
+          )}
+
           {/* <Menu.Menu position="right">
             <Menu.Item>
               <Input icon="search" placeholder="Search..." />

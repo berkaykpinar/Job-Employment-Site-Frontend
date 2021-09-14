@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Menu, Button, Modal, Form, Checkbox } from "semantic-ui-react";
+import { setLoginType } from "../store/actions/loginTypeAction";
 import SignedIn from "./SignedIn";
 
 function exampleReducer(state, action) {
@@ -14,6 +16,26 @@ function exampleReducer(state, action) {
 }
 
 export default function SignedOut({ signIn }) {
+  const dispatchh = useDispatch();
+
+  const handleSetType = (type) => {
+    dispatchh(setLoginType(type));
+    console.log("test");
+  };
+
+  const onClickUser = () => {
+    handleSetType(1);
+    signIn();
+  };
+  const onClickEmployer = () => {
+    handleSetType(2);
+    signIn();
+  };
+  const onClickPersonnel = () => {
+    handleSetType(3);
+    signIn();
+  };
+
   const [state, dispatch] = React.useReducer(exampleReducer, {
     open: false,
     dimmer: undefined,
@@ -51,13 +73,22 @@ export default function SignedOut({ signIn }) {
               <label>Password</label>
               <input placeholder="Password" />
             </Form.Field>
-            <Button positive onClick={signIn}>
+            <Button
+              positive
+              onClick={() => {
+                onClickUser();
+              }}
+            >
               Login
             </Button>
-            <Button secondary style={{ marginLeft: "0.5em" }}>
+            <Button
+              secondary
+              onClick={() => onClickEmployer()}
+              style={{ marginLeft: "0.5em" }}
+            >
               Employer Login
             </Button>
-            <Button negative floated="right">
+            <Button onClick={() => onClickPersonnel()} negative floated="right">
               Personnel Login
             </Button>
           </Form>

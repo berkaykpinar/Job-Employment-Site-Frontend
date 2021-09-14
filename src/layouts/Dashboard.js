@@ -1,5 +1,4 @@
 import React from "react";
-import Categories from "./Categories";
 import { Grid, GridColumn, GridRow } from "semantic-ui-react";
 import { Route } from "react-router";
 import JobList from "../pages/JobList";
@@ -33,13 +32,8 @@ export default function Dashboard() {
             ></Route>
           </GridColumn>
         </Grid.Row>
-        <Grid.Row>
-          <Grid.Column width={4}>
-            <Route exact path="/">
-              <Categories />
-            </Route>
-          </Grid.Column>
-          <Grid.Column width={12}>
+        <Grid.Row exact path="/">
+          <Grid.Column>
             <Route exact path="/" component={JobList} />
             <Route exact path="/joblist" component={JobList} />
 
