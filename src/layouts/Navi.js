@@ -8,8 +8,9 @@ import Advertisement from "../pages/Advertisement";
 import JobList from "../pages/JobList";
 import { useSelector } from "react-redux";
 export default function Navi() {
-  const [isAuthenticated, setAuthenticated] = useState(true);
+  const [isAuthenticated, setAuthenticated] = useState(false);
   const history = useHistory();
+
   const loginType = useSelector((state) => state.loginType);
   console.log(loginType);
 
@@ -31,7 +32,12 @@ export default function Navi() {
           </Menu.Item>
           {loginType == 2 && (
             <Menu.Item>
-              <Link to="/advertisement">Advertisements</Link>
+              <Link to="/advertisement">Add Advertisement</Link>
+            </Menu.Item>
+          )}
+          {loginType == 2 && (
+            <Menu.Item>
+              <Link to="/myadvertisements">My Advertisements</Link>
             </Menu.Item>
           )}
 
@@ -50,6 +56,12 @@ export default function Navi() {
           {loginType == 1 && (
             <Menu.Item>
               <Link to="/resume">My Resume</Link>
+            </Menu.Item>
+          )}
+
+          {loginType == 1 && (
+            <Menu.Item>
+              <Link to="/myapplications">My Applications</Link>
             </Menu.Item>
           )}
 

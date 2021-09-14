@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import {
   Button,
@@ -10,8 +11,11 @@ import {
 } from "semantic-ui-react";
 import EmployerService from "../services/employerService";
 import JobSeekerService from "../services/jobSeekerService";
+import { Link, useHistory } from "react-router-dom";
 
 export default function JobDetail() {
+  const loginType = useSelector((state) => state.loginType);
+  let userId = 11;
   let { adId } = useParams();
   const [job, setJob] = useState([]);
 
@@ -25,7 +29,7 @@ export default function JobDetail() {
   };
 
   useEffect(() => {
-    setFav({ favAdId: parseInt(adId), favId: 0, jobSeekers: { id: 11 } });
+    setFav({ favAdId: parseInt(adId), favId: 0, jobSeekers: { id: userId } });
     let employerService = new EmployerService();
     employerService
       .getByAdvertisementId(adId)
@@ -34,13 +38,21 @@ export default function JobDetail() {
 
   return (
     <div>
-      <Button positive floated>
-        Apply now!
-      </Button>
-      <Button floated="right" color="violet" onClick={handleClick}>
-        <Icon name="favorite"></Icon>
-        Add Favorites
-      </Button>
+      {loginType == 1 && (
+        <Link to={`/applydetails/${adId}/${userId}`}>
+          <Button positive floated>
+            Apply now!
+          </Button>
+        </Link>
+      )}
+
+      {loginType == 1 && (
+        <Button floated="right" color="violet" onClick={handleClick}>
+          <Icon name="favorite"></Icon>
+          Add Favorites
+        </Button>
+      )}
+
       <Header as="h3" block>
         {job.title}
       </Header>

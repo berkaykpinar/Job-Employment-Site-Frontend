@@ -15,7 +15,7 @@ export default function JobList() {
   useEffect(() => {
     let employerService = new EmployerService();
     employerService
-      .getAdvertisementList()
+      .getApprovedAds()
       .then((result) => setJobs(result.data.data));
   }, []);
 

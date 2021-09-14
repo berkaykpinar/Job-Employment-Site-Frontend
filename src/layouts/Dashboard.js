@@ -10,6 +10,10 @@ import Resume from "../pages/Resume";
 import ResumeDetail from "../pages/ResumeDetail";
 import AddResume from "../pages/AddResume";
 import AddResumeDetails from "../pages/AddResumeDetails";
+import MyAdvertisements from "../pages/MyAdvertisements";
+import ApplyDetails from "../pages/ApplyDetails";
+import MyApplications from "../pages/MyApplications";
+import Candidates from "../pages/Candidates";
 
 export default function Dashboard() {
   return (
@@ -30,15 +34,18 @@ export default function Dashboard() {
               path="/addResumDetails/:resumeId/:userId"
               component={AddResumeDetails}
             ></Route>
-          </GridColumn>
-        </Grid.Row>
-        <Grid.Row exact path="/">
-          <Grid.Column>
+            <Route
+              path="/applydetails/:adId/:userId"
+              component={ApplyDetails}
+            />
             <Route exact path="/" component={JobList} />
             <Route exact path="/joblist" component={JobList} />
 
             <Route path="/advertisement" component={Advertisement} />
-          </Grid.Column>
+            <Route path="/myadvertisements" component={MyAdvertisements} />
+            <Route path="/myapplications" component={MyApplications} />
+            <Route path="/candidates/:adId" component={Candidates} />
+          </GridColumn>
         </Grid.Row>
       </Grid>
     </div>

@@ -72,4 +72,13 @@ export default class JobSeekerService {
   addLanguage(language) {
     return axios.post("http://localhost:8080/languages/add", language);
   }
+
+  addJobApply(job) {
+    return axios.post("http://localhost:8080/applications/add", job);
+  }
+  getApplicationListByUserId(userId) {
+    return axios.get(
+      `http://localhost:8080/applications/getApplicationsByUserId?userId=${userId}`
+    );
+  }
 }

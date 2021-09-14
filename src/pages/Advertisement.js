@@ -20,6 +20,7 @@ export default function Advertisement() {
   //const [startDate, setStartDate] = useState(new Date());
   // const [lastDate, setLastDate] = useState(new Date());
   ///const [workType, setWorkType] = React.useState(1);
+  const employerId = 23;
 
   const history = useHistory();
 
@@ -28,7 +29,7 @@ export default function Advertisement() {
       city: "",
       deadline: "",
       description: "",
-      employers: { id: 13 },
+      employers: { id: employerId },
       isActive: false,
       isApproved: false,
       positionNum: 0,
