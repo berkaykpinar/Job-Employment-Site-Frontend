@@ -14,6 +14,7 @@ import MyAdvertisements from "../pages/MyAdvertisements";
 import ApplyDetails from "../pages/ApplyDetails";
 import MyApplications from "../pages/MyApplications";
 import Candidates from "../pages/Candidates";
+import ProfileDetails from "../pages/ProfileDetails";
 
 export default function Dashboard() {
   return (
@@ -45,6 +46,7 @@ export default function Dashboard() {
             <Route path="/myadvertisements" component={MyAdvertisements} />
             <Route path="/myapplications" component={MyApplications} />
             <Route path="/candidates/:adId" component={Candidates} />
+            <Route path="/profiledetails/:userId" component={ProfileDetails} />
           </GridColumn>
         </Grid.Row>
       </Grid>

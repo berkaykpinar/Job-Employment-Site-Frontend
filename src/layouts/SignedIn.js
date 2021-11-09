@@ -25,7 +25,9 @@ export default function SignedIn({ signOut }) {
     <div>
       <Menu.Item>
         <Menu.Item>
-          <Link> My profile</Link>
+          {logintype != 0 && (
+            <Link to="/profiledetails/:userId"> My profile</Link>
+          )}
         </Menu.Item>
         {logintype == 1 && (
           <Image
